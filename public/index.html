@@ -40,40 +40,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
     <script>
-      const socket = io("https://socket-server-iconic.herokuapp.com/");
-      const $formulario = document.querySelector("#miFormulario");
-      const $mensajes = document.querySelector("#misMensajes");
-      const $txtMensaje = document.querySelector("#txtMensaje");
-
-      $formulario.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const nuevoMensaje = txtMensaje.value;
-        socket.emit("mensaje-to-server", { texto: nuevoMensaje });
-        $txtMensaje.value = "";
+      const socket = io("http://localhost:8082");
+      socket.on("current-bands", (data) => {
+        console.log(data);
       });
-
-      socket.on("connect", () => {
-        console.log("conectado");
-      });
-
-      socket.on("mensaje-from-server", ({ texto }) => {
-        const item = document.createElement("li");
-        item.textContent = texto;
-
-        $mensajes.append(item);
-      });
-
-      // socket.on("mensaje-bienvenida", (data) => {
-      //   console.log(data);
-      // });
-
-      // setTimeout(() => {
-      //   socket.emit("mensaje-cliente", {
-      //     msg: "cliente",
-      //     nombre: "Fernando",
-      //   });
-      // }, 2000);
     </script>
   </body>
 </html>

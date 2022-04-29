@@ -33,7 +33,7 @@ class BandList {
   }
 
   /**
-   * @returns {Band}
+   * @returns {Band} band list
    */
   getBands() {
     return this.bands;
@@ -66,3 +66,5 @@ class BandList {
     });
   }
 }
+
+module.exports = BandList;
